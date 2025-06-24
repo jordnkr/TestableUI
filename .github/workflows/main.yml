@@ -14,9 +14,8 @@ jobs:
 
     - name: Serve HTML files
       run: |
-        npm install -g http-server
-        http-server . -p 8080 &
-        sleep 5  # give it time to start
+        npx http-server . -p 8080 &
+        sleep 5
 
     - name: Checkout Selenium Tests (Repo B)
       uses: actions/checkout@v4
