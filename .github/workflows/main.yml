@@ -20,7 +20,7 @@ jobs:
     - name: Checkout Selenium Tests (Repo B)
       uses: actions/checkout@v4
       with:
-        repository: https://github.com/jordnkr/SeleniumDemo2025
+        repository: jordnkr/SeleniumDemo2025
         token: ${{ secrets.PAT }}
         path: selenium-tests
 
