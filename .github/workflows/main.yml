@@ -29,8 +29,12 @@ jobs:
       with:
         dotnet-version: '8.x'
 
+    - name: Fix Selenium Manager permissions
+      run: |
+        chmod +x selenium-tests/SeleniumDemo2025/bin/Debug/net8.0/selenium-manager/linux/selenium-manager || true
+
     - name: Run Selenium Tests
       run: |
         cd selenium-tests
         dotnet restore
-        dotnet test --no-build
+        dotnet test
