@@ -1,0 +1,37 @@
+name: Run Selenium Tests
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout web app (Repo A)
+      uses: actions/checkout@v4
+
+    - name: Serve HTML files
+      run: |
+        npm install -g http-server
+        http-server . -p 8080 &
+        sleep 5  # give it time to start
+
+    - name: Checkout Selenium Tests (Repo B)
+      uses: actions/checkout@v4
+      with:
+        repository: your-org/selenium-tests
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        path: selenium-tests
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.x'
+
+    - name: Run Selenium Tests
+      run: |
+        cd selenium-tests
+        dotnet restore
+        dotnet test --no-build
