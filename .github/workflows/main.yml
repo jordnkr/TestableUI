@@ -21,8 +21,8 @@ jobs:
     - name: Checkout Selenium Tests (Repo B)
       uses: actions/checkout@v4
       with:
-        repository: your-org/selenium-tests
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        repository: https://github.com/jordnkr/SeleniumDemo2025
+        token: ${{ secrets.PAT }}
         path: selenium-tests
 
     - name: Setup .NET
