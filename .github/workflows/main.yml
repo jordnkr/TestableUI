@@ -14,14 +14,13 @@ jobs:
 
     - name: Serve HTML files
       run: |
-        npm install -g http-server
-        http-server . -p 8080 &
-        sleep 5  # give it time to start
+        npx http-server . -p 8080 &
+        sleep 5
 
     - name: Checkout Selenium Tests (Repo B)
       uses: actions/checkout@v4
       with:
-        repository: https://github.com/jordnkr/SeleniumDemo2025
+        repository: jordnkr/SeleniumDemo2025
         token: ${{ secrets.PAT }}
         path: selenium-tests
 
@@ -30,8 +29,12 @@ jobs:
       with:
         dotnet-version: '8.x'
 
+    - name: Fix Selenium Manager permissions
+      run: |
+        chmod +x selenium-tests/SeleniumDemo2025/bin/Debug/net8.0/selenium-manager/linux/selenium-manager || true
+
     - name: Run Selenium Tests
       run: |
         cd selenium-tests
         dotnet restore
-        dotnet test --no-build
+        dotnet test
