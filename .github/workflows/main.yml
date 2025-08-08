@@ -34,6 +34,12 @@ jobs:
       run: |
         npm ci
 
+    # Install Playwright browsers and OS dependencies
+    - name: Install Playwright Browsers
+      working-directory: playwright-tests
+      run: |
+        npx playwright install --with-deps
+
     - name: Run functional tests for testable-ui
       working-directory: playwright-tests
       run: |
