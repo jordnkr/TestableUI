@@ -38,7 +38,8 @@ jobs:
     - name: Install Playwright Browsers
       working-directory: playwright-tests
       run: |
-        npx playwright install --with-deps
+        npx playwright install chromium
+      # npx playwright install --with-deps this does full install for all browsers
 
     - name: Run functional tests for testable-ui
       working-directory: playwright-tests
