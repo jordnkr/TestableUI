@@ -20,7 +20,7 @@ jobs:
     - name: Checkout Playwright Tests
       uses: actions/checkout@v4
       with:
-        repository: jordnkr//playwright-testing-suite-demo
+        repository: jordnkr/playwright-testing-suite-demo
         token: ${{ secrets.PAT }}
         path: playwright-tests
 
